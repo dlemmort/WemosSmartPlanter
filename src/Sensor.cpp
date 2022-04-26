@@ -4,13 +4,13 @@
 
 #include "Sensor.h"
 
-Sensor::Sensor(int pin, int minValue, int maxValue) {
-    powerPin = pin;
+Sensor::Sensor(Multiplexer* multiplexer, int pin, int minValue, int maxValue) {
+    _multiplexer = multiplexer;
+    sensorPin = pin;
     this->minValue = minValue;
     this->maxValue = maxValue;
     pinMode(pin,OUTPUT);
     digitalWrite(pin,LOW);
-
 }
 
 int Sensor::getPercentageValue() {
@@ -22,17 +22,7 @@ int Sensor::getSensorValue() {
     return readSensor();
 }
 
-void Sensor::activateSensor() {
-    digitalWrite(powerPin,HIGH);
-}
-
 int Sensor::readSensor() {
-    activateSensor();
-    int sensorValue = analogRead(A0);
-    deactivateSensor();
-    return sensorValue;
-}
-
-void Sensor::deactivateSensor() {
-    digitalWrite(powerPin,LOW);
+    Serial.println("Start reading sensor value:");
+    _multiplexer->ReadValue(sensorPin);
 }

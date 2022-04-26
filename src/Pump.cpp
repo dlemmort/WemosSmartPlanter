@@ -12,6 +12,8 @@ Pump::Pump(int pin) {
 
 void Pump::giveWater(int seconds) {
     digitalWrite(pin,HIGH);
+    Serial.println("On");
     delay(seconds*1000);
     digitalWrite(pin,LOW);
+    Serial.println("Off");
 }

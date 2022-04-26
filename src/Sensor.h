@@ -6,20 +6,20 @@
 #define UNTITLED1_SENSOR_H
 
 #include <Arduino.h>
+#include "Multiplexer.h"
 
 class Sensor {
 public:
-    Sensor(int pin, int minValue, int maxValue);
+    Sensor(Multiplexer* multiplexer, int pin, int minValue, int maxValue);
     int getSensorValue();
     int getPercentageValue();
 
 private:
-    int powerPin;
+    Multiplexer* _multiplexer = nullptr;
+    int sensorPin;
     int minValue;
     int maxValue;
-    void activateSensor();
     int readSensor();
-    void deactivateSensor();
 };
 
 
