@@ -13,6 +13,8 @@ public:
     Sensor(Multiplexer* multiplexer, int pin, int minValue, int maxValue);
     int getSensorValue();
     int getPercentageValue();
+    void setMinValue(int minValue);
+    void setMaxValue(int maxValue);
 
 private:
     Multiplexer* _multiplexer = nullptr;

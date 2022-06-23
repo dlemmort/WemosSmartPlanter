@@ -23,6 +23,13 @@ int Sensor::getSensorValue() {
 }
 
 int Sensor::readSensor() {
-    Serial.println("Start reading sensor value:");
-    _multiplexer->ReadValue(sensorPin);
+    return _multiplexer->ReadValue(sensorPin);
+}
+
+void Sensor::setMinValue(int minValue) {
+    minValue = minValue;
+}
+
+void Sensor::setMaxValue(int maxValue) {
+    maxValue = maxValue;
 }
